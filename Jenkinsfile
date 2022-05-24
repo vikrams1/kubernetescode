@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       app = sudo docker.build("testvikrams1/eksraj")
+       app =  docker.build("testvikrams1/eksraj")
     }
 
     stage('Test image') {
@@ -23,7 +23,7 @@ node {
     stage('Push image') {
         
         docker.withRegistry('https://registry.hub.docker.com','docker-hub') {
-            sudo app.push("${env.BUILD_NUMBER}")
+             app.push("${env.BUILD_NUMBER}")
         }
     }
     
